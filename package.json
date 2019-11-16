@@ -6,7 +6,19 @@
   "author": "minung.han <hmu332233@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node bin/www"
+    "start": "node bin/www",
+    "prettier": "prettier --write --config .prettierrc '**/*.js'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --config .prettierrc",
+      "git add"
+    ]
   },
   "dependencies": {
     "dotenv": "^8.2.0",
