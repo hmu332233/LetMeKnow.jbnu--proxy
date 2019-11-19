@@ -7,3 +7,4 @@
 - request를 분석하여 원하는 앱으로 넘겨주기
 - request를 db에 기록
 - 기능의 on/off
+- 특정 유저의 block
