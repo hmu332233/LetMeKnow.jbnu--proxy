@@ -4,7 +4,7 @@ exports.parseKakaoRequestBody = body => {
   } = body;
 
   const userId = userRequest.user.id;
-  const utterance = userRequest.user.utterance;
+  const utterance = userRequest.utterance;
   const block = userRequest.block;
   const params = action.params;
 

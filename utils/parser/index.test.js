@@ -44,7 +44,7 @@ describe('parser - parseKakaoRequestBody', () => {
   test('userId, utterance, block, params가 정상적으로 뽑히는가', () => {
     const result = parser.parseKakaoRequestBody(REQUEST_BODY);
     expect(result.userId).toEqual(REQUEST_BODY.chat.userRequest.user.id);
-    expect(result.utterance).toEqual(REQUEST_BODY.chat.userRequest.user.utterance);
+    expect(result.utterance).toEqual(REQUEST_BODY.chat.userRequest.utterance);
     expect(result.block).toEqual(REQUEST_BODY.chat.userRequest.block);
     expect(result.params).toEqual(REQUEST_BODY.chat.action.params);
   });
