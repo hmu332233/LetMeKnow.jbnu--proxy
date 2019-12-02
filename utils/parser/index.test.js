@@ -1,9 +1,4 @@
-const { setupDB } = require('../../../jest.setup-db');
-setupDB();
-
-const coreApi = require('../../../utils/api/coreApi');
-const request = require('supertest');
-const app = require('../../../app');
+const parser = require('./index');
 
 const REQUEST_BODY = {
   chat: {
@@ -45,17 +40,12 @@ const REQUEST_BODY = {
   },
 };
 
-describe('api - kakao', () => {
-  test('post message - status code 200', done => {
-    coreApi.message = jest.fn().mockResolvedValue({});
-    request(app)
-      .post('/api/v1/kakao/message')
-      .send(REQUEST_BODY)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .then(res => {
-        expect(res.statusCode).toBe(200);
-        done();
-      });
+describe('parser - parseKakaoRequestBody', () => {
+  test('userId, utterance, block, params가 정상적으로 뽑히는가', () => {
+    const result = parser.parseKakaoRequestBody(REQUEST_BODY);
+    expect(result.userId).toEqual(REQUEST_BODY.chat.userRequest.user.id);
+    expect(result.utterance).toEqual(REQUEST_BODY.chat.userRequest.utterance);
+    expect(result.block).toEqual(REQUEST_BODY.chat.userRequest.block);
+    expect(result.params).toEqual(REQUEST_BODY.chat.action.params);
   });
 });

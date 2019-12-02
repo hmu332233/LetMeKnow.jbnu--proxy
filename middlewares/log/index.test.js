@@ -1,9 +1,11 @@
-const { setupDB } = require('../../../jest.setup-db');
+const { setupDB } = require('./../../jest.setup-db');
 setupDB();
 
-const coreApi = require('../../../utils/api/coreApi');
-const request = require('supertest');
-const app = require('../../../app');
+const { db } = require('../../models/userWords/info');
+const UserWords = require('../../models/userWords');
+const parser = require('../../utils/parser');
+
+const { saveKakaoLog } = require('./index');
 
 const REQUEST_BODY = {
   chat: {
@@ -45,17 +47,23 @@ const REQUEST_BODY = {
   },
 };
 
-describe('api - kakao', () => {
-  test('post message - status code 200', done => {
-    coreApi.message = jest.fn().mockResolvedValue({});
-    request(app)
-      .post('/api/v1/kakao/message')
-      .send(REQUEST_BODY)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .then(res => {
-        expect(res.statusCode).toBe(200);
-        done();
-      });
+describe('log - saveKakaoLog', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('UserWord가 생성되고 next가 호출됨', async () => {
+    const req = {
+      body: REQUEST_BODY,
+    };
+    const res = v => v;
+    const next = jest.fn();
+
+    await saveKakaoLog(req, res, next);
+
+    const userWord = await db.user_words.findOne({ id: REQUEST_BODY.chat.userRequest.user.id }).lean();
+
+    expect(userWord).not.toEqual(null);
+    expect(next).toHaveBeenCalledTimes(1);
   });
 });
