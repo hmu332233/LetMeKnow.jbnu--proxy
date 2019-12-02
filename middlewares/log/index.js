@@ -6,7 +6,7 @@ exports.saveKakaoLog = async (req, res, next) => {
   await UserWords.create({
     origin: UserWords.CONSTANTS.ORIGIN.KAKAO,
     id: userId,
-    utterance,
+    utterance: utterance.trim(),
     block,
   });
   next();
