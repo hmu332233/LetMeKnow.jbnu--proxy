@@ -8,3 +8,9 @@
 - request를 db에 기록
 - 기능의 on/off
 - 특정 유저의 block
+
+### Note
+
+이 프로젝트는 [알려줘전북대](https://pf.kakao.com/_LffxoM)의 일부입니다.  
+프로젝트에 대해서는 아래의 repository에서 확인해주세요.
+[https://github.com/hmu332233/LetMeKnow.jbnu](https://github.com/hmu332233/LetMeKnow.jbnu)
