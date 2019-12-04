@@ -1,7 +1,5 @@
 exports.parseKakaoRequestBody = body => {
-  const {
-    chat: { userRequest, action },
-  } = body;
+  const { userRequest, action } = body;
 
   const userId = userRequest.user.id;
   const utterance = userRequest.utterance;
