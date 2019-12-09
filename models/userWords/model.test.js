@@ -42,5 +42,28 @@ describe('models - userWords', () => {
       expect(userWord.id).toBe('test');
       expect(userWord.utterance).toBe('test');
     });
+
+    test('모든 파라미터가 정상적으로 저장', async () => {
+      const id = 'test';
+      const utterance = 'test';
+      const context = 'test';
+      const block = { id: 'test', name: 'test' };
+      const params = { test: 'test', test2: 'test2' };
+
+      const userWord = await UserWords.create({
+        origin: UserWords.CONSTANTS.ORIGIN.KAKAO,
+        id,
+        utterance,
+        context,
+        block,
+        params,
+      });
+      expect(userWord.origin).toBe(UserWords.CONSTANTS.ORIGIN.KAKAO);
+      expect(userWord.id).toEqual(id);
+      expect(userWord.utterance).toEqual(utterance);
+      expect(userWord.context).toEqual(context);
+      expect(userWord.block).toEqual(block);
+      expect(userWord.params).toEqual(params);
+    });
   });
 });

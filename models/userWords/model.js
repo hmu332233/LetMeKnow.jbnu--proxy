@@ -2,6 +2,6 @@ const { db, CONSTANTS } = require('./info');
 
 exports.CONSTANTS = CONSTANTS;
 
-exports.create = ({ origin, id, utterance, block, params }) => {
-  return db.user_words.create({ origin, id, utterance, block, params });
+exports.create = ({ origin, id, utterance, context, block, params }) => {
+  return db.user_words.create({ origin, id, utterance, context, block, params });
 };

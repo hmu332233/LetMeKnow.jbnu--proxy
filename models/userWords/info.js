@@ -28,6 +28,10 @@ const userWordSchema = mongoose.Schema(
       type: String,
       default: '',
     },
+    context: {
+      type: String,
+      default: '',
+    },
     block: {
       id: String,
       name: String,
