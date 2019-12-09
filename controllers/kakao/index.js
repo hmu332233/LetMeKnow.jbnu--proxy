@@ -3,9 +3,8 @@ const parser = require('../../utils/parser');
 
 exports.message = async (req, res, next) => {
   try {
-    const { userId, params } = parser.parseKakaoRequestBody(req.body);
-    const newUtterance = Object.values(params).join(' ');
-    const coreResponse = await coreApi.message({ userId, utterance: newUtterance });
+    const { userId, context } = parser.parseKakaoRequestBody(req.body);
+    const coreResponse = await coreApi.message({ userId, utterance: context });
     res.json(coreResponse);
   } catch (err) {
     next(err);
