@@ -62,6 +62,7 @@ describe('log - saveKakaoLog', () => {
     const userWord = await db.user_words.findOne({ id: REQUEST_BODY.userRequest.user.id }).lean();
 
     expect(userWord).not.toEqual(null);
+    expect(userWord.context).toEqual('내일 참빛관');
     expect(next).toHaveBeenCalledTimes(1);
   });
 });
