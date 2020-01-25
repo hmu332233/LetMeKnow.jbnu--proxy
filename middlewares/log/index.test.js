@@ -57,12 +57,17 @@ describe('log - saveKakaoLog', () => {
     const res = v => v;
     const next = jest.fn();
 
-    await saveKakaoLog(req, res, next);
+    saveKakaoLog(req, res, next);
 
-    const userWord = await db.user_words.findOne({ id: REQUEST_BODY.userRequest.user.id }).lean();
+    await new Promise((resolve, reject) => {
+      setTimeout(async () => {
+        const userWord = await db.user_words.findOne({ id: REQUEST_BODY.userRequest.user.id }).lean();
 
-    expect(userWord).not.toEqual(null);
-    expect(userWord.context).toEqual('내일 참빛관');
-    expect(next).toHaveBeenCalledTimes(1);
+        expect(userWord).not.toEqual(null);
+        expect(userWord.context).toEqual('내일 참빛관');
+        expect(next).toHaveBeenCalledTimes(1);
+        resolve();
+      }, 100);
+    });
   });
 });
