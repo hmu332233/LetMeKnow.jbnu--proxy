@@ -1,9 +1,9 @@
 const { setupDB } = require('./../../configs/jest.setup-db');
 setupDB();
 
-const { db } = require('../../models/userWords/info');
-const UserWords = require('../../models/userWords');
-const parser = require('../../utils/parser');
+import db from '../../models/userWords/db';
+import UserWords from '../../models/userWords';
+import parser from '../../utils/parser';
 
 const { saveKakaoLog } = require('./index');
 
@@ -35,7 +35,7 @@ const REQUEST_BODY = {
       type: 'botUserKey',
     },
   },
-  contexts: [],
+  contexts: [] as string[],
   action: {
     name: '알려줘전북대 bot server',
     params: {
@@ -54,21 +54,21 @@ describe('log - saveKakaoLog', () => {
     const req = {
       body: REQUEST_BODY,
     };
-    const res = v => v;
+    const res = (v: any) => v;
     const next = jest.fn();
 
     saveKakaoLog(req, res, next);
 
     await new Promise((resolve, reject) => {
       setTimeout(async () => {
-        const userWord = await db.user_words
+        const userWord = await db
           .findOne({ id: REQUEST_BODY.userRequest.user.id })
           .lean();
 
         expect(userWord).not.toEqual(null);
         expect(userWord.context).toEqual('내일 참빛관');
         expect(next).toHaveBeenCalledTimes(1);
-        resolve();
+        resolve(true);
       }, 100);
     });
   });
