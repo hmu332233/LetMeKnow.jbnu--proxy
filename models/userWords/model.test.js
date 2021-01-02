@@ -1,4 +1,4 @@
-const { setupDB } = require('./../../jest.setup-db');
+const { setupDB } = require('./../../configs/jest.setup-db');
 setupDB();
 
 const { db, CONSTANTS } = require('./info');
@@ -14,7 +14,10 @@ describe('models - userWords', () => {
   describe('create', () => {
     test('id 값이 없을 경우 에러', async () => {
       try {
-        await UserWords.create({ origin: UserWords.CONSTANTS.ORIGIN.KAKAO, utterance: 'test ' });
+        await UserWords.create({
+          origin: UserWords.CONSTANTS.ORIGIN.KAKAO,
+          utterance: 'test ',
+        });
         expect(true).toBe(false);
       } catch (err) {
         expect(err.name).toBe('ValidationError');
@@ -31,13 +34,20 @@ describe('models - userWords', () => {
     });
 
     test('utterance 값이 없을 경우 ""', async () => {
-      const userWord = await UserWords.create({ origin: UserWords.CONSTANTS.ORIGIN.KAKAO, id: 'test' });
+      const userWord = await UserWords.create({
+        origin: UserWords.CONSTANTS.ORIGIN.KAKAO,
+        id: 'test',
+      });
       expect(userWord.origin).toBe(UserWords.CONSTANTS.ORIGIN.KAKAO);
       expect(userWord.utterance).toBe('');
     });
 
     test('origin, id, utterance 있을 경우 정상 처리', async () => {
-      const userWord = await UserWords.create({ origin: UserWords.CONSTANTS.ORIGIN.KAKAO, id: 'test', utterance: 'test' });
+      const userWord = await UserWords.create({
+        origin: UserWords.CONSTANTS.ORIGIN.KAKAO,
+        id: 'test',
+        utterance: 'test',
+      });
       expect(userWord.origin).toBe(UserWords.CONSTANTS.ORIGIN.KAKAO);
       expect(userWord.id).toBe('test');
       expect(userWord.utterance).toBe('test');

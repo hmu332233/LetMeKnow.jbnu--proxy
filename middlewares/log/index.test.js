@@ -1,4 +1,4 @@
-const { setupDB } = require('./../../jest.setup-db');
+const { setupDB } = require('./../../configs/jest.setup-db');
 setupDB();
 
 const { db } = require('../../models/userWords/info');
@@ -61,7 +61,9 @@ describe('log - saveKakaoLog', () => {
 
     await new Promise((resolve, reject) => {
       setTimeout(async () => {
-        const userWord = await db.user_words.findOne({ id: REQUEST_BODY.userRequest.user.id }).lean();
+        const userWord = await db.user_words
+          .findOne({ id: REQUEST_BODY.userRequest.user.id })
+          .lean();
 
         expect(userWord).not.toEqual(null);
         expect(userWord.context).toEqual('내일 참빛관');

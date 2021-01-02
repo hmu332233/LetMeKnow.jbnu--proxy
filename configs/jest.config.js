@@ -1,5 +1,5 @@
 module.exports = {
-  rootDir: './',
+  rootDir: '../',
   verbose: true,
   transform: {},
   testEnvironment: 'node',

@@ -1,4 +1,4 @@
-const { setupDB } = require('../../../jest.setup-db');
+const { setupDB } = require('./../../../configs/jest.setup-db');
 setupDB();
 
 const coreApi = require('../../../utils/api/coreApi');

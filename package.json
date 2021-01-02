@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node bin/www",
-    "prettier": "prettier --write --config .prettierrc '**/*.js'",
-    "test": "jest --detectOpenHandles --forceExit --config jest.config.js"
+    "prettier": "prettier --write --config configs/prettier.config.js '**/*.js'",
+    "test": "jest --detectOpenHandles --forceExit --config configs/jest.config.js"
   },
   "husky": {
     "hooks": {
@@ -18,7 +18,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --write --config .prettierrc",
+      "prettier --write --config configs/prettier.config.js",
       "git add"
     ]
   },
@@ -36,6 +36,7 @@
     "lint-staged": "^9.4.3",
     "morgan": "^1.9.1",
     "prettier": "^1.19.1",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "typescript": "^4.1.3"
   }
 }
