@@ -1,3 +1,3 @@
 import * as kakao from './kakao';
 
-export { kakao };
+export default { kakao };
