@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rm -rf dist; tsc --project configs/tsconfig.json",
     "start": "node bin/www",
-    "prettier": "prettier --write --config configs/prettier.config.js '**/*.[js|ts]'",
+    "prettier": "prettier --write --config configs/prettier.config.js '**/*.ts'",
     "test": "npm run build; npm run test:only",
     "test:only": "jest --detectOpenHandles --forceExit --config configs/jest.config.js"
   },
@@ -19,7 +19,7 @@
     }
   },
   "lint-staged": {
-    "*.[js|ts]": [
+    "*.ts": [
       "prettier --write --config configs/prettier.config.js",
       "git add"
     ]

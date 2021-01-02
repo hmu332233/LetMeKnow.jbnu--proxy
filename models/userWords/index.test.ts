@@ -1,7 +1,6 @@
 import { setupDB } from '../../configs/jest.setup-db';
 setupDB();
 
-
 import db from './db';
 import UserWords, { ORIGIN } from './index';
 

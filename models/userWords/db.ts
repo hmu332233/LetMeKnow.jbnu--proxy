@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 /*
  *  UserWord
  *  type 요청의 보내진 곳의 이름
