@@ -6,9 +6,11 @@
   "author": "minung.han <hmu332233@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "rm -rf dist; tsc --project configs/tsconfig.json",
     "start": "node bin/www",
     "prettier": "prettier --write --config configs/prettier.config.js '**/*.js'",
-    "test": "jest --detectOpenHandles --forceExit --config configs/jest.config.js"
+    "test": "npm run build; npm run test:only",
+    "test:only": "jest --detectOpenHandles --forceExit --config configs/jest.config.js"
   },
   "husky": {
     "hooks": {

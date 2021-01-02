@@ -10,7 +10,7 @@
     "allowJs": true,                          /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
     
-    "outDir": "./dist",                        /* Redirect output structure to the directory. */
+    "outDir": "../dist",                        /* Redirect output structure to the directory. */
 
     /* Strict Type-Checking Options */
     // "strict": true,                           /* Enable all strict type-checking options. */
@@ -32,6 +32,6 @@
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["./**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["../**/*"],
+  "exclude": ["node_modules", "../configs/*"]
 }
