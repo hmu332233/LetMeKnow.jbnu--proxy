@@ -19,7 +19,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.[js|ts]": [
       "prettier --write --config configs/prettier.config.js",
       "git add"
     ]

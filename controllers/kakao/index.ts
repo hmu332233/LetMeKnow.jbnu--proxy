@@ -1,7 +1,9 @@
-const coreApi = require('../../utils/api/coreApi');
-const parser = require('../../utils/parser');
+import { Request, Response, NextFunction } from 'express';
 
-exports.message = async (req, res, next) => {
+import coreApi from '../../utils/api/coreApi';
+import parser from '../../utils/parser';
+
+export const message = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userId, utterance, context } = parser.parseKakaoRequestBody(req.body);
     const coreResponse = await coreApi.message({ userId, utterance: context || utterance });

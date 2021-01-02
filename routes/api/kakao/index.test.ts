@@ -33,7 +33,7 @@ const REQUEST_BODY = {
       type: 'botUserKey',
     },
   },
-  contexts: [],
+  contexts: [] as string[],
   action: {
     name: '알려줘전북대 bot server',
     params: {
@@ -51,7 +51,7 @@ describe('api - kakao', () => {
       .send(REQUEST_BODY)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
-      .then(res => {
+      .then((res: any) => {
         expect(res.statusCode).toBe(200);
         done();
       });
