@@ -2,8 +2,6 @@ const { setupDB } = require('./../../configs/jest.setup-db');
 setupDB();
 
 import db from '../../models/userWords/db';
-import UserWords from '../../models/userWords';
-import parser from '../../utils/parser';
 
 const { saveKakaoLog } = require('./index');
 
