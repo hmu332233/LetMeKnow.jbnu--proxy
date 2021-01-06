@@ -1,9 +1,9 @@
-const { setupDB } = require('./../../../configs/jest.setup-db');
+import { setupDB } from './../../../configs/jest.setup-db';
 setupDB();
 
-const coreApi = require('../../../utils/api/coreApi');
-const request = require('supertest');
-const app = require('../../../app');
+import coreApi from '../../../utils/api/coreApi';
+import request from 'supertest';
+import app from '../../../app';
 
 const REQUEST_BODY = {
   intent: {
