@@ -6,9 +6,11 @@
   "author": "minung.han <hmu332233@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "rm -rf dist; tsc --project configs/tsconfig.json",
     "start": "node bin/www",
-    "prettier": "prettier --write --config .prettierrc '**/*.js'",
-    "test": "jest --detectOpenHandles --forceExit --config jest.config.js"
+    "prettier": "prettier --write --config configs/prettier.config.js '**/*.ts'",
+    "test": "npm run build; npm run test:only",
+    "test:only": "jest --detectOpenHandles --forceExit --config configs/jest.config.js"
   },
   "husky": {
     "hooks": {
@@ -17,8 +19,8 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write --config .prettierrc",
+    "*.ts": [
+      "prettier --write --config configs/prettier.config.js",
       "git add"
     ]
   },
@@ -31,11 +33,16 @@
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.1.3",
+    "@types/express": "^4.17.9",
+    "@types/jest": "^26.0.19",
+    "@types/supertest": "^2.0.10",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.3",
     "morgan": "^1.9.1",
     "prettier": "^1.19.1",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
   }
 }

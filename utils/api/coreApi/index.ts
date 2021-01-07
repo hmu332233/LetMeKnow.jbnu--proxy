@@ -1,6 +1,12 @@
 const axios = require('axios');
 
-exports.message = async ({ userId, utterance }) => {
+const message = async ({
+  userId,
+  utterance,
+}: {
+  userId: string;
+  utterance: object;
+}) => {
   const data = {
     userRequest: {
       user: {
@@ -11,4 +17,8 @@ exports.message = async ({ userId, utterance }) => {
   };
   const res = await axios.post(`${process.env.CORE_URL}/message`, data);
   return res.data;
+};
+
+export default {
+  message,
 };
