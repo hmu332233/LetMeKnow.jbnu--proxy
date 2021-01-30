@@ -1,7 +1,7 @@
 import { setupDB } from './../../../configs/jest.setup-db';
 setupDB();
 
-import coreApi from '../../../utils/api/coreApi';
+import coreApi from '../../../libs/coreApi';
 import request from 'supertest';
 import app from '../../../app';
 
