@@ -4,8 +4,7 @@ import managementApi from '../../libs/managementApi';
 import coreApi from '../../libs/coreApi';
 import { STORE, DORMITORY } from '../../types';
 
-const isStore = (id: STORE | DORMITORY): id is STORE =>
-  Object.values(STORE).includes(id);
+const isStore = (id: any): id is STORE => Object.values(STORE).includes(id);
 
 type RequestQuery = { id: STORE | DORMITORY };
 export const getMenus = async (
