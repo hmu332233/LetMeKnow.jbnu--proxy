@@ -19,10 +19,16 @@ const message = async ({
       utterance,
     },
   };
-  const res = await coreAxios.post(`/message`, data);
+  const res = await coreAxios.get(`/message`, data);
+  return res.data;
+};
+
+const getMenus = async () => {
+  const res = await coreAxios.get(`/api/menu_domitory/menus`);
   return res.data;
 };
 
 export default {
   message,
+  getMenus,
 };

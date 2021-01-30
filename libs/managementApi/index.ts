@@ -1,6 +1,8 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const coreAxios = axios.create({
+import { normalizeMenus } from './utils';
+
+const managementAxios = axios.create({
   baseURL: process.env.MANAGEMENT_URL,
 });
 
@@ -14,8 +16,12 @@ export enum STORE {
 
 const getMenus = async (storeId: STORE) => {
   const options = {};
-  const res = await coreAxios.get(`/api/v1/menus/${storeId}`, options);
-  return res.data;
+  const res = await managementAxios.get(`/api/v1/menus/${storeId}`, options);
+
+  if (res.data.success) {
+    return normalizeMenus(res.data.data);
+  }
+  return {};
 };
 
 export default {
