@@ -20,15 +20,16 @@
   },
   "lint-staged": {
     "*.ts": [
-      "prettier --write --config configs/prettier.config.js",
-      "git add"
+      "prettier --write --config configs/prettier.config.js"
     ]
   },
   "dependencies": {
+    "@types/lodash": "^4.14.168",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
+    "lodash": "^4.17.20",
     "mongoose": "^5.11.10"
   },
   "devDependencies": {

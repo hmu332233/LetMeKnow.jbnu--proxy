@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import coreApi from '../../utils/api/coreApi';
+import coreApi from '../../libs/coreApi';
 import parser from '../../utils/parser';
 
 export const message = async (
