@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  help-jbnu--proxy:
+    image: help-jbnu--proxy
+    ports:
+      - "3001:3000"

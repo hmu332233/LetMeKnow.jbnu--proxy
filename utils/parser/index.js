@@ -6,5 +6,7 @@ exports.parseKakaoRequestBody = body => {
   const block = userRequest.block;
   const params = action.params;
 
-  return { userId, utterance, block, params };
+  const context = Object.values(params).join(' ');
+
+  return { userId, utterance, context, block, params };
 };

@@ -6,9 +6,11 @@
   "author": "minung.han <hmu332233@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "rm -rf dist; tsc --project configs/tsconfig.json",
     "start": "node bin/www",
-    "prettier": "prettier --write --config .prettierrc '**/*.js'",
-    "test": "jest --detectOpenHandles --forceExit --config jest.config.js"
+    "prettier": "prettier --write --config configs/prettier.config.js '**/*.ts'",
+    "test": "npm run build; npm run test:only",
+    "test:only": "jest --detectOpenHandles --forceExit --config configs/jest.config.js"
   },
   "husky": {
     "hooks": {
@@ -17,25 +19,31 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write --config .prettierrc",
-      "git add"
+    "*.ts": [
+      "prettier --write --config configs/prettier.config.js"
     ]
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "@types/lodash": "^4.14.168",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "http-errors": "^1.7.3",
-    "mongoose": "^5.7.11"
+    "http-errors": "^1.8.0",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.11.10"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.1.3",
-    "husky": "^3.0.9",
+    "@types/express": "^4.17.9",
+    "@types/jest": "^26.0.19",
+    "@types/supertest": "^2.0.10",
+    "husky": "^4.3.7",
     "jest": "^24.9.0",
-    "lint-staged": "^9.4.3",
+    "lint-staged": "^10.5.3",
     "morgan": "^1.9.1",
-    "prettier": "^1.19.1",
-    "supertest": "^4.0.2"
+    "prettier": "^2.2.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
   }
 }

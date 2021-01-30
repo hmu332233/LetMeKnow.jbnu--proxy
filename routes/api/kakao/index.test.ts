@@ -1,9 +1,9 @@
-const { setupDB } = require('../../../jest.setup-db');
+import { setupDB } from './../../../configs/jest.setup-db';
 setupDB();
 
-const coreApi = require('../../../utils/api/coreApi');
-const request = require('supertest');
-const app = require('../../../app');
+import coreApi from '../../../libs/coreApi';
+import request from 'supertest';
+import app from '../../../app';
 
 const REQUEST_BODY = {
   intent: {
@@ -33,7 +33,7 @@ const REQUEST_BODY = {
       type: 'botUserKey',
     },
   },
-  contexts: [],
+  contexts: [] as string[],
   action: {
     name: '알려줘전북대 bot server',
     params: {
@@ -51,7 +51,7 @@ describe('api - kakao', () => {
       .send(REQUEST_BODY)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
-      .then(res => {
+      .then((res: any) => {
         expect(res.statusCode).toBe(200);
         done();
       });

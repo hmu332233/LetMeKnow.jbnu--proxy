@@ -46,4 +46,9 @@ describe('parser - parseKakaoRequestBody', () => {
     expect(result.block).toEqual(REQUEST_BODY.userRequest.block);
     expect(result.params).toEqual(REQUEST_BODY.action.params);
   });
+
+  test('context가 정상적으로 뽑히는가', () => {
+    const result = parser.parseKakaoRequestBody(REQUEST_BODY);
+    expect(result.context).toEqual('내일 참빛관');
+  });
 });
